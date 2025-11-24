@@ -277,7 +277,7 @@
     // Supabase configuration
     const SUPABASE_URL = 'https://wlfadbreypyfakaxbwgh.supabase.co';
     const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndsZmFkYnJleXB5ZmFrYXhid2doIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjM5NTEyOTYsImV4cCI6MjA3OTUyNzI5Nn0.AsGijvZvcHXONrHSQQbwkrV_noBDOBAqRfJnG_T1aDE';
-    const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
     // Supabase functions
     async function loadFromSupabase() {
@@ -402,25 +402,6 @@
         textInput.required = false;
       }
     }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      const selectInput = document.getElementById('input-mesin-select');
-      const textInput = document.getElementById('input-mesin-text');
-      
-      selectInput.addEventListener('change', (e) => {
-        if (e.target.value === '__new__') {
-          selectInput.style.display = 'none';
-          selectInput.required = false;
-          textInput.style.display = 'block';
-          textInput.required = true;
-          textInput.value = '';
-          textInput.focus();
-        }
-      });
-      
-      // Load data on page load
-      loadFromSupabase();
-    });
 
     function initApp() {
       if (window.elementSdk) {
@@ -976,7 +957,27 @@
       }
     });
 
-    initApp();
+    document.addEventListener('DOMContentLoaded', () => {
+      const selectInput = document.getElementById('input-mesin-select');
+      const textInput = document.getElementById('input-mesin-text');
+      
+      selectInput.addEventListener('change', (e) => {
+        if (e.target.value === '__new__') {
+          selectInput.style.display = 'none';
+          selectInput.required = false;
+          textInput.style.display = 'block';
+          textInput.required = true;
+          textInput.value = '';
+          textInput.focus();
+        }
+      });
+      
+      // Initialize app
+      initApp();
+      
+      // Load data on page load
+      loadFromSupabase();
+    });
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a35af3eb2b9fde2',t:'MTc2Mzk1MzUyNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a35d4c32325f8cc',t:'MTc2Mzk1NTA2Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
