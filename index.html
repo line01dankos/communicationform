@@ -539,14 +539,17 @@
       chartHTML = '';
       Object.entries(closedPerMesin).forEach(([mesin, stats]) => {
         const percentage = stats.total > 0 ? ((stats.closed / stats.total) * 100).toFixed(1) : 0;
+        const isComplete = percentage == 100;
+        const barColor = isComplete ? 'linear-gradient(90deg, #43e97b, #38f9d7)' : 'linear-gradient(90deg, #f093fb, #f5576c)';
+        const textColor = isComplete ? '#059669' : '#f5576c';
         chartHTML += `
           <div style="margin-bottom: 12px;">
             <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
               <span style="font-weight: 600; color: #475569;">${mesin}</span>
-              <span style="color: #059669; font-weight: 600;">${percentage}%</span>
+              <span style="color: ${textColor}; font-weight: 600;">${percentage}%</span>
             </div>
             <div style="background: #e2e8f0; height: 8px; border-radius: 4px; overflow: hidden;">
-              <div style="background: linear-gradient(90deg, #43e97b, #38f9d7); height: 100%; width: ${percentage}%; transition: width 0.3s ease;"></div>
+              <div style="background: ${barColor}; height: 100%; width: ${percentage}%; transition: width 0.3s ease, background 0.3s ease;"></div>
             </div>
           </div>
         `;
@@ -569,10 +572,10 @@
           <div style="margin-bottom: 12px;">
             <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
               <span style="font-weight: 600; color: #475569;">${operator}</span>
-              <span style="color: #f5576c; font-weight: 600;">${count} Temuan</span>
+              <span style="color: #059669; font-weight: 600;">${count} Temuan</span>
             </div>
             <div style="background: #e2e8f0; height: 8px; border-radius: 4px; overflow: hidden;">
-              <div style="background: linear-gradient(90deg, #f093fb, #f5576c); height: 100%; width: ${barWidth}%; transition: width 0.3s ease;"></div>
+              <div style="background: linear-gradient(90deg, #43e97b, #38f9d7); height: 100%; width: ${barWidth}%; transition: width 0.3s ease;"></div>
             </div>
           </div>
         `;
@@ -986,5 +989,5 @@
       loadFromSupabase();
     });
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a36245ac3418d32',t:'MTc2Mzk1ODMyMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a3658f547be9958',t:'MTc2Mzk2MDQ3Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
